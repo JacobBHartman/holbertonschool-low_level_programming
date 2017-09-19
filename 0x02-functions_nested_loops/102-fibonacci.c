@@ -10,21 +10,21 @@
 int main(void)
 {
 	int n;
-	int first;
-	int second;
-	int third;
+	unsigned long first;
+	unsigned long second;
+	unsigned long third;
 
 	n = 0;
 	first = 1;
 	second = 2;
-	printf("%d, %d, ", first, second);
+	printf("%lu, %lu, ", first, second);
 	for (n = 0; n < 47; n++)
 	{
 		third = first + second;
-		printf("%d, ", third);
+		printf("%lu, ", third);
 		first = second;
 		second = third;
 	}
-	printf("%d\n", first + second);
+	printf("%lu\n", first + second);
 	return (0);
 }
