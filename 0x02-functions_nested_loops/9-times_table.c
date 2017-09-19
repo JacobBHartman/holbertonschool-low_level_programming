@@ -20,60 +20,29 @@ void times_table(void)
 			result = x * y;
 			i = result / 10;
 			j = result % 10;
-			if (x == 9)
-			{
-				_putchar('0' + i);
-				_putchar('0' + j);
-				_putchar('\n');
-			}
-		       	else if (x == 0)
-			{
-				_putchar('0' + result);
-			}
+			if (x == 0) /* print before number */
+				; /* do nothing */
 			else if (result > 9)
-			{
-				_putchar('0' + i);
-				_putchar('0' + j);
-			}
+				; /* do nothing */
 			else if (result < 10)
-			{
 				_putchar(' ');
-				_putchar('0' + result);
+			else
+			{
+				; /* error */
 			}
-		        else if
-			if (result <= 9 && x == 0 && x != 9)
+			if (result > 9) /* print number */
 			{
-				_putchar('0' + result);
-			}
-			else if (result <= 9 && x != 0 && x != 9)
-			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
-				_putchar('0' + result);
-			}
-			else if (result <= 9 && x == 9)
-			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
-				_putchar('0' + result);
-				_putchar('\n');
-			}
-			else if (result >= 10 && x != 9)
-			{
-				_putchar(',');
-				_putchar(' ');
 				_putchar('0' + i);
 				_putchar('0' + j);
 			}
 			else
+				_putchar('0' + result);
+			if (x == 9) /* print after number */
+				_putchar('\n');
+			else
 			{
 				_putchar(',');
 				_putchar(' ');
-				_putchar('0' + i);
-				_putchar('0' + j);
-				_putchar('\n');
 			}
 		}
 	}
