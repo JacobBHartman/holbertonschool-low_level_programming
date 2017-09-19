@@ -10,21 +10,63 @@
 int main(void)
 {
 	int n;
-	int first;
-	int second;
-	int third;
+	unsigned long first;
+	unsigned long second;
+	unsigned long third;
+	unsigned long firstA;
+	unsigned long firstB;
+	unsigned long secA;
+	unsigned long secB;
+	unsigned long thirdA;
+	unsigned long thirdB;
+	unsigned long carry;
 
 	n = 0;
 	first = 1;
 	second = 2;
-	printf("%d, %d, ", first, second);
-	for (n = 0; n < 98; n++)
+	printf("%lu, %lu, ", first, second);
+	for (n = 0; n < 90; n++)
 	{
 		third = first + second;
-		printf("%d, ", third);
+		printf("%lu, ", third);
 		first = second;
 		second = third;
 	}
-	printf("%d\n", first + second);
+	printf("BREAK\n");
+	firstA = first / 1000000000000;
+	firstB = first % 1000000000000;
+	secA = second / 1000000000000;
+	secB = second % 1000000000000;
+	for (n = 0; n < 5; n++)
+	{
+		thirdB = firstB + secB;
+		if (thirdB > 999999999999)
+		{
+			carry = thirdB / 1000000000000;
+			thirdB %= 1000000000000;
+			thirdA = firstA + secA + carry;
+		}
+		else
+		{
+			thirdA = firstA + secA;
+		}
+	       	printf("%lu%lu, ", thirdA, thirdB);
+		firstA = secA;
+		firstB = secB;
+		secA = thirdA;
+		secB = thirdB;
+	}
+	thirdB = firstB + secB;
+	if (thirdB > 999999999999)
+	{
+		carry = thirdB / 1000000000000;
+		thirdB %= 1000000000000;
+		thirdA = firstA + secA + carry;
+	}
+	else
+	{
+		thirdA = firstA + secA;
+	}
+	printf("%lu%lu\n", thirdA, thirdB);
 	return (0);
 }
