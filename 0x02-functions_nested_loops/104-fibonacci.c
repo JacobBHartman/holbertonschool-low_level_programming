@@ -10,16 +10,8 @@
 int main(void)
 {
 	int n;
-	unsigned long first;
-	unsigned long second;
-	unsigned long third;
-	unsigned long firstA;
-	unsigned long firstB;
-	unsigned long secA;
-	unsigned long secB;
-	unsigned long thirdA;
-	unsigned long thirdB;
-	unsigned long carry;
+	unsigned long first, second, third, firstA, firstB, secA, secB;
+	unsigned long thirdA, thirdB, carry;
 
 	n = 0;
 	first = 1;
@@ -32,7 +24,6 @@ int main(void)
 		first = second;
 		second = third;
 	}
-	printf("BREAK\n");
 	firstA = first / 1000000000000;
 	firstB = first % 1000000000000;
 	secA = second / 1000000000000;
@@ -50,7 +41,7 @@ int main(void)
 		{
 			thirdA = firstA + secA;
 		}
-	       	printf("%lu%lu, ", thirdA, thirdB);
+		printf("%lu%lu, ", thirdA, thirdB);
 		firstA = secA;
 		firstB = secB;
 		secA = thirdA;
