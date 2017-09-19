@@ -15,7 +15,7 @@ int main(void)
 	int sum;
 
 	first = 1;
-     	second = 2;
+	second = 2;
 	sum = 2;
 
 	while (second < 4000000)
