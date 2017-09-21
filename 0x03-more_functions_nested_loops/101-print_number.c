@@ -10,21 +10,22 @@ void print_number(int n)
 	int digit;
 	int modulo;
 
+	digit = 1;
 	modulo = 1;
 	if (n < 0)
 	{
 		_putchar('-');
 		n *= -1;
 	}
-	while (modulo * 10 < n)
+	while (modulo * 10 <= n)
 	{
 		modulo *= 10;
 	}
 	while (modulo > 0)
 	{
 		digit = n / modulo;
-		n -= modulo * digit;
-		modulo /= 10;
+		n -= digit * modulo;
 		_putchar('0' + digit);
+		modulo /= 10;
 	}
 }
