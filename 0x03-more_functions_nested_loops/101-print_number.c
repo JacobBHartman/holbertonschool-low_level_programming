@@ -8,25 +8,32 @@
 void print_number(int n)
 {
 	int digit;
-	int modulo;
+	int magnitude;
 
 	digit = 1;
-	modulo = 1;
+	magnitude = 1;
 	if (n < 0)
 	{
 		_putchar('-');
 		n *= -1;
 	}
-	while (modulo * 10 <= n)
+	if (n == 0)
 	{
-		modulo *= 10;
+		_putchar('0');
 	}
-	while (modulo > 1)
+	else
 	{
-		digit = n / modulo;
-		n -= digit * modulo;
-		_putchar('0' + digit);
-		modulo /= 10;
+		while (n >= magnitude * 10)
+		{
+			magnitude *= 10;
+		}
+		while (magnitude > 1)
+		{
+			digit = n / magnitude;
+			n -= digit * magnitude;
+			_putchar('0' + digit);
+			magnitude /= 10;
+		}
+		_putchar('0' + n);
 	}
-	_putchar('0' + n);
 }

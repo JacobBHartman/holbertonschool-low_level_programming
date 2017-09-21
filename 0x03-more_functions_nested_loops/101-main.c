@@ -21,5 +21,9 @@ int main(void)
 	_putchar('\n');
 	print_number(1);
 	_putchar('\n');
+	print_number(100);
+	_putchar('\n');
+	print_number(111);
+	_putchar('\n');
 	return (0);
 }
