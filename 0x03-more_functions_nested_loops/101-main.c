@@ -21,9 +21,11 @@ int main(void)
 	_putchar('\n');
 	print_number(1);
 	_putchar('\n');
-	print_number(100);
+	print_number(100000);
 	_putchar('\n');
 	print_number(111);
+	_putchar('\n');
+	print_number(2);
 	_putchar('\n');
 	return (0);
 }
