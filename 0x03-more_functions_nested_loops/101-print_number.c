@@ -7,37 +7,27 @@
  */
 void print_number(int n)
 {
-	int digit;
 	int magnitude;
+	unsigned int nu;
 
-	digit = 1;
 	magnitude = 1;
 	if (n < 0)
 	{
 		_putchar('-');
-		n *= -1;
-	}
-	if (n == 0)
-	{
-		_putchar('0');
-	}
-	else if (n > 2147483646 || n < -2147483647)
-	{
-		;
+		nu = -n;
 	}
 	else
 	{
-		while (n >= magnitude * 10)
-		{
-			magnitude *= 10;
-		}
-		while (magnitude > 1)
-		{
-			digit = n / magnitude;
-			n -= digit * magnitude;
-			_putchar('0' + digit);
-			magnitude /= 10;
-		}
-		_putchar('0' + n);
+		nu = n;
+	}
+	while (nu / magnitude >= 10)
+	{
+		magnitude *= 10;
+	}
+	while (magnitude > 0)
+	{
+		_putchar('0' + (nu / magnitude));
+		nu %= magnitude;
+		magnitude /= 10;
 	}
 }
