@@ -21,7 +21,7 @@ void print_number(int n)
 	{
 		_putchar('0');
 	}
-	else if (n > 2147483647 || n < -2147483647)
+	else if (n > 2147483646 || n < -2147483647)
 	{
 		;
 	}
