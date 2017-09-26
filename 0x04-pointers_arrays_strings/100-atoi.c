@@ -12,6 +12,7 @@ int _atoi(char *s)
 	int digit;
 	int neg;
 
+	digit = 0;
 	neg = 1;
 	number = 0;
 	i = 0;
