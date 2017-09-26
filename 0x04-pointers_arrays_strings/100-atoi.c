@@ -18,30 +18,30 @@ int _atoi(char *s)
 	i = 0;
 	while (s[i] != '\0')
 	{
+		if (s[i] == '-')
+		{
+			neg *= -1;
+		}
 		if (s[i] <= '9' && s[i] >= '0')
 		{
 			digit = s[i] - '0';
 			number = 10 * number;
 			number += digit;
-		}
-		else if (s[i] == '-')
-		{
-			neg *= -1;
-		}
-		else if ((s[i - 1] >= '0' && s[i - 1] <= '9') &&\
-			 (s[i] < '0' || s[i] > '9'))
-		{
+			i++;
+			while (s[i] >= '0' && s[i] <= '9')
+			{
+				digit = s[i] - '0';
+				number = 10 * number;
+				number += digit;
+				i++;
+			}
 			break;
-		}
+	        }
 		else
 		{
-			/* do nothing */
+			i++;
 		}
-		i++;
 	}
 	number *= neg;
-	if (number == 0)
-		return (0);
-	else
-		return (number);
+	return (number);
 }
