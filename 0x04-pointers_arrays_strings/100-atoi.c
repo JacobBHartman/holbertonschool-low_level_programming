@@ -28,21 +28,20 @@ int _atoi(char *s)
 		{
 			neg *= -1;
 		}
-		else if ((s[i - 1] >= '0' && s[i - 1] <= '9') &&	\
+		else if ((s[i - 1] >= '0' && s[i - 1] <= '9') &&\
 			 (s[i] < '0' || s[i] > '9'))
 		{
-			number *= neg;
-			return (number);
+			break;
 		}
 		else
 		{
-		       /* do nothing */
+			/* do nothing */
 		}
 		i++;
 	}
 	number *= neg;
-	if (number != 0)
-		return (number);
-	else
+	if (number == 0)
 		return (0);
+	else
+		return (number);
 }
