@@ -12,8 +12,8 @@ int _atoi(char *s)
 	int digit;
 	int neg;
 
-	digit = 0;
 	neg = 1;
+	digit = 0;
 	number = 0;
 	i = 0;
 	while (s[i] != '\0')
@@ -27,21 +27,24 @@ int _atoi(char *s)
 			digit = s[i] - '0';
 			number = 10 * number;
 			number += digit;
+			number *= neg;
 			i++;
 			while (s[i] >= '0' && s[i] <= '9')
 			{
 				digit = s[i] - '0';
 				number = 10 * number;
-				number += digit;
+				if (number > 0)
+					number += digit;
+				else
+					number -= digit;
 				i++;
 			}
 			break;
-	        }
+		}
 		else
 		{
 			i++;
 		}
 	}
-	number *= neg;
 	return (number);
 }
