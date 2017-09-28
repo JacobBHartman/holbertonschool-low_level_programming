@@ -9,21 +9,26 @@
 void print_number(int n)
 {
 	int magnitude;
+	unsigned int nu;
 
 	magnitude = 1;
 	if (n < 0)
 	{
 		_putchar('-');
-		n *= -1;
+		nu = n * -1;
 	}
-	while (n / magnitude >= 10)
+	else
+	{
+		nu = n * 1;
+	}
+	while (nu / magnitude >= 10)
 	{
 		magnitude *= 10;
 	}
 	while (magnitude > 0)
 	{
-		_putchar('0' + (n / magnitude));
-		n %= magnitude;
+		_putchar('0' + (nu / magnitude));
+		nu %= magnitude;
 		magnitude /= 10;
 	}
 }
