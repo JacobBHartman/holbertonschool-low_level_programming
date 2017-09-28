@@ -23,8 +23,7 @@ char *cap_string(char *s)
 			inWord = 1;
 		if (s[i] >= '0' && s[i] <= '9' && inWord == 0)
 			inWord = 1;
-		if (s[i] == ' ' || s[i] == '\n' || s[i] == '-' || s[i] == '.' ||\
-		    s[i] == '\t')
+		if (s[i] == ' ' || s[i] == '\n' || s[i] == '.' || s[i] == '\t')
 			inWord = 0;
 	}
 	return (s);
