@@ -42,3 +42,5 @@ main_files contains main files used to make executable the functions contained w
 exec_files contains executable files used to test the functions contaned within the mandatory files.
 
 0x06 contains files pertinent to the file named 101-crackme_password.
+
+func_files contains previously created functions used concurrently with main files and mandatory files when compiling.
