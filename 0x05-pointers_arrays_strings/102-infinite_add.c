@@ -1,6 +1,5 @@
 #include "holberton.h"
 
-
 void reverse_carray(char *a, int n)
 {
         int i;
@@ -33,27 +32,38 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	/* find number of elements in arrays */
 	for (i = 0; n1[i] != '\0'; i++)
 		;
-	reverse_carray(n1, i);
 	for (j = 0; n2[j] != '\0'; j++)
 		;
+	/* reverse elements of array in order to add easier */
+	reverse_carray(n1, i);
 	reverse_carray(n2, j);
-	for (i = 0; r[i] > 0 && carry > 0; i++)
+	n1[i] = '\0';
+	n2[j] = '\0';
+	/* adder */
+	for (i = 0; eon1 != 1 && eon2 != 1; i++)
 	{
-		carry += n1[i] + n2[i];
+		carry += n1[i] + n2[i] - 96;
 		if (carry > 9)
 		{
-			r[i] = carry - 10;
+			r[i] = carry - 10 + 48;
 			carry = 1;
 		}
 		else
 		{
-			r[i] = carry;
+			r[i] = carry + 48;
 		}
 	}
 	r[i] = '\0';
-	for (i = 0; ; i++)
+	for (i = 0; r[i] != '\0'; i++)
 		;
 	reverse_carray(r, i);
-	
-	return (r);
+	if (i > size_r)
+		return (0);
+	else
+	{
+		for (i = 0; i < size_r; i++)
+			;
+		r[i] = '\0';
+		return (r);
+	}
 }
