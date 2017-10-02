@@ -1,5 +1,6 @@
 # 0x04-pointers_arrays_strings
 ## README.md
+
 ### mandatory files
 0-reset_to_98.c
 contains a function that takes a pointer to an int and updates the value it points to to 98.
@@ -35,3 +36,10 @@ contains a function that copies the string pointed to by src.
 contains a function that converts a string to an integer.
 
 101-keygen.c (not completed)
+
+### other files and directories
+main_files contains main files used to make executable the functions inside the mandatory files.
+
+exec_files contains executable files used to test the functions inside the mandatory files.
+
+0x04.c contains files pertinent to task 101 which was not completed.
