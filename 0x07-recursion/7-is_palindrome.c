@@ -1,21 +1,16 @@
 #include "holberton.h"
 
 /**
- * _strlen - returns the length of a string
+ * _strlen_recursive - returns the length of a string
  * @s: string to be measured
  *
  * Return: length of the string
  */
-int _strlen(char *s)
+int _strlen_recursive(char *s)
 {
-        int length;
-
-        length = 0;
-        while (s[length] != '\0')
-        {
-                length++;
-        }
-        return (length);
+	if (*s == '\0')
+		return (0);
+	return (_strlen_recursive(++s) + 1);
 }
 
 /**
@@ -48,7 +43,7 @@ int is_palindrome(char *s)
 {
 	int length;
 
-	length = _strlen(s);
+	length = _strlen_recursive(s);
 	if (length < 2)
 		return (1);
 	return (pali_help(s, length, 0));
