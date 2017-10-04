@@ -2,6 +2,8 @@
 ## README.md
 
 ### mandatory files
+holberton.h contains function prototypes for functions inside mandatory files.
+
 0-reset_to_98.c
 contains a function that takes a pointer to an int and updates the value it points to to 98.
 
