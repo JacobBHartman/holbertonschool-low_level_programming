@@ -30,7 +30,7 @@ int pali_help(char *s, int length, int iteration)
 {
 	if (*(s + iteration) == *(s + length - (1 + iteration)))
 	{
-		if ((iteration + 1) * 2 >= length)
+		if (length - 1 - (2 * iteration) < 2)
 			return (1);
 		return (pali_help(s, length, ++iteration));
 	}
