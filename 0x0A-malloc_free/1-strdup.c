@@ -19,7 +19,7 @@ char *_strdup(char *str)
 	for (i = 0; str[i] != '\0'; i++)
 		;
 	/* allocate memory for new string s */
-	s = malloc(i * sizeof(char));
+	s = malloc(1 + (i * sizeof(char)));
 	/* if malloc erred, return NULL */
 	if (s == NULL)
 		return (NULL);
