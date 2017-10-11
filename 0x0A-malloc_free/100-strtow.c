@@ -41,6 +41,12 @@ char **strtow(char *str)
 			;
 		else if (str[i] != ' ' && i == 0)
 			;
+		else if (str[i] != ' ' && str[i + 1] == '\0')
+		{
+			*(ourstr + wc) = malloc((1 + len) * sizeof(char));
+			len = 0;
+			wc++;
+		}
 		else if (str[i] == ' ' && str[i - 1] != ' ')
 		{
 			*(ourstr + wc) = malloc((1 + len) * sizeof(char));
@@ -78,6 +84,12 @@ char **strtow(char *str)
 			;
                 else if (str[i] != ' ' && i == 0)
 			;
+		else if (str[i] != ' ' && str[i + 1] == '\0')
+		{
+                        *(*(ourstr + wc) + len) = '\0';
+                        len = 0;
+                        wc++;
+                }
 		else if (str[i] == ' ' && str[i - 1] != ' ')
 		{
 			*(*(ourstr + wc) + len) = '\0';
