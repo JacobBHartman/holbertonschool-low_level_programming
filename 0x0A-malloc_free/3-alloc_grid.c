@@ -13,8 +13,10 @@ int **alloc_grid(int width, int height)
 	int **grid;
 	int i, j, k;
 
+	/* check if height or width are zero */
 	if (height == 0 || width == 0)
 		return (NULL);
+	/* allocate memory for each row (which are pointers to int arrays) */
 	grid = malloc(height * sizeof(int *));
 	if (grid == NULL)
 		return (NULL);
@@ -22,7 +24,15 @@ int **alloc_grid(int width, int height)
 	{
 		*(grid + k) = malloc(width * sizeof(int));
 		if (*(grid + k) == NULL)
+		{
+			while (k >= 0)
+			{
+				free(*(grid + k));
+				k--;
+			}
+			free(grid);
 			return (NULL);
+		}
 	}
 	for (i = 0; i < height; i++)
 	{
