@@ -79,14 +79,6 @@ char **strtow(char *str)
 	}
 	*(ourstr + wc) = NULL;
 
-	/* free up allocated memory */
-	while (wc >= 0)
-	{
-		free(*(ourstr + wc));
-		wc--;
-	}
-	free(ourstr);
-
 	/* return da array of arrays! */
 	return (ourstr);
 }
