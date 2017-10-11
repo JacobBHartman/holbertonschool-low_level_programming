@@ -39,6 +39,8 @@ char **strtow(char *str)
 			len++;
 		else if (str[i] == ' ' && i == 0)
 			;
+		else if (str[i] != ' ' && i == 0)
+			;
 		else if (str[i] == ' ' && str[i - 1] != ' ')
 		{
 			*(ourstr + wc) = malloc((1 + len) * sizeof(char));
@@ -73,6 +75,8 @@ char **strtow(char *str)
 			len++;
 		}
 		else if (str[i] == ' ' && i == 0)
+			;
+                else if (str[i] != ' ' && i == 0)
 			;
 		else if (str[i] == ' ' && str[i - 1] != ' ')
 		{
