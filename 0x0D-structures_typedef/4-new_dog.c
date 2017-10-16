@@ -16,20 +16,39 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *sname;
 	char *sowner;
 
+	/* allocate memory for struct we wish to return */
 	d = malloc(sizeof(d));
 	if (d == NULL)
+	{
+		free(d);
 		return (NULL);
+	}
 
+	/* store a copy of name into sname */
 	for (i = 0; name[i] != '\0'; i++)
 		;
 	sname = malloc(i * sizeof(char));
+	if (sname == NULL)
+	{
+		free(sname);
+		free(d);
+		return (NULL);
+	}
 	for (i = 0; name[i] != '\0'; i++)
 		sname[i] = name[i];
 	sname[i] = '\0';
 
-	for (i = 0; owner[i] !='\0'; i++)
+	/* store a copy of owner into sowner */
+	for (i = 0; owner[i] != '\0'; i++)
 		;
 	sowner = malloc(i * sizeof(char));
+	if (sowner == NULL)
+	{
+		free(sowner);
+		free(sname);
+		free(d);
+		return (NULL);
+	}
 	for (i = 0; owner[i] != '\0'; i++)
 		sowner[i] = owner[i];
 	sowner[i] = '\0';
