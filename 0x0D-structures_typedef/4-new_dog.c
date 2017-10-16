@@ -2,6 +2,41 @@
 #include <stdlib.h>
 
 /**
+ * _strdup - points to a newly allocated memoryspace which has a given string
+ * @str: the string
+ *
+ * Return: a pointer to a char ie a string or array
+ */
+char *_strdup(char *str)
+{
+	int i;
+	char *s;
+
+	/* check if str is NULL */
+	if (str == NULL)
+		return (NULL);
+
+	/* get size of str */
+	for (i = 0; str[i] != '\0'; i++)
+		;
+
+	/* allocate memory for new string s */
+	s = malloc(1 + (i * sizeof(char)));
+
+	/* if malloc erred, return NULL */
+	if (s == NULL)
+		return (NULL);
+
+	/* copy str to s */
+	for (i = 0; str[i] != '\0'; i++)
+		*(s + i) = *(str + i);
+	*(s + i) = *(str + i);
+
+	/* return son! */
+	return (s);
+}
+
+/**
  * new_dog - creates a new dog of type struct dog
  * @name: new dog name
  * @age: new dog age
@@ -12,7 +47,6 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *d;
-	int i;
 	char *sname;
 	char *sowner;
 
@@ -25,33 +59,21 @@ dog_t *new_dog(char *name, float age, char *owner)
 	}
 
 	/* store a copy of name into sname */
-	for (i = 0; name[i] != '\0'; i++)
-		;
-	sname = malloc(i * sizeof(char));
+	sname = _strdup(name);
 	if (sname == NULL)
 	{
-		free(sname);
-		free(d);
+		free (d);
 		return (NULL);
 	}
-	for (i = 0; name[i] != '\0'; i++)
-		sname[i] = name[i];
-	sname[i] = '\0';
 
 	/* store a copy of owner into sowner */
-	for (i = 0; owner[i] != '\0'; i++)
-		;
-	sowner = malloc(i * sizeof(char));
+	sowner = _strdup(owner);
 	if (sowner == NULL)
 	{
-		free(sowner);
-		free(sname);
-		free(d);
+		free (d->name);
+		free (d);
 		return (NULL);
 	}
-	for (i = 0; owner[i] != '\0'; i++)
-		sowner[i] = owner[i];
-	sowner[i] = '\0';
 
 	d->name = sname;
 	d->age = age;
