@@ -50,11 +50,14 @@ dog_t *new_dog(char *name, float age, char *owner)
 	char *sname;
 	char *sowner;
 
+	/* check for invalid name and owner */
+	if (name == NULL || owner == NULL)
+		return (NULL);
+
 	/* allocate memory for struct we wish to return */
 	d = malloc(sizeof(d));
 	if (d == NULL)
 	{
-		free(d);
 		return (NULL);
 	}
 
@@ -62,21 +65,21 @@ dog_t *new_dog(char *name, float age, char *owner)
 	sname = _strdup(name);
 	if (sname == NULL)
 	{
-		free (d);
+		free(d);
 		return (NULL);
 	}
+	d->name = sname;
+
+	d->age = age;
 
 	/* store a copy of owner into sowner */
 	sowner = _strdup(owner);
 	if (sowner == NULL)
 	{
-		free (d->name);
-		free (d);
+		free(d->name);
+		free(d);
 		return (NULL);
 	}
-
-	d->name = sname;
-	d->age = age;
 	d->owner = sowner;
 	return (d);
 }
