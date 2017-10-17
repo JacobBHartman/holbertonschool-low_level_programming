@@ -55,7 +55,7 @@ dog_t *new_dog(char *name, float age, char *owner)
 		return (NULL);
 
 	/* allocate memory for struct we wish to return */
-	d = malloc(sizeof(d));
+	d = malloc(sizeof(dog_t));
 	if (d == NULL)
 		return (NULL);
 
