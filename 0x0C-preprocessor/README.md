@@ -1,4 +1,4 @@
-#Preprocessor
+# Preprocessor
 
 ## File Descriptions
 * __0-object_like_macro.h__ defines a macro named SIZE as an abbreviation for the token 1024.
@@ -6,7 +6,7 @@
 * __2-main.c__ prints the name of the file it was compiled from.
 * __3-function_like_macro.h__ contains a function-like macro ABS(x) that computes the absolute value of a number x.
 * __4-sum.h__ contains a function like-macro SUM(x, y) that computes the sum of the numbers x and y.
-
+* __README.md contains information about this repository
 ## Purpose
 Demonstrates applied knowledge in macros relevant to the C language
 
