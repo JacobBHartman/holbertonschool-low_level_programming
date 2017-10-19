@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 	/* declare variables */
 	int a;
 	int b;
+	int (*func)(int, int);
 
 	/* error checks */
 	if (argc != 4)
@@ -33,8 +34,11 @@ int main(int argc, char *argv[])
 	a = atoi(argv[1]);
 	b = atoi(argv[3]);
 
-	/* print result */
-	printf("%i\n", get_op_func(argv[2])(a, b));
+	/* get the function we need */
+	func = get_op_func(argv[2]);
+
+	/* perform the operation */
+	printf("%i\n", func(a, b));
 
 	return (0);
 }
