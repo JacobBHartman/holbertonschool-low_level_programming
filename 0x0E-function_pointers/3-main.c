@@ -2,12 +2,12 @@
 
 /**
  * main - commands the program
- * @argc: argument count
- * @argv: pointer to arrays of strings
+ * @c: argument count
+ * @v: pointer to arrays of strings
  *
  * Return: 0 if successful
  */
-int main(int argc, char *argv[])
+int main(int c, char *v[])
 {
 	/* declare variables */
 	int a;
@@ -15,28 +15,28 @@ int main(int argc, char *argv[])
 	int (*func)(int, int);
 
 	/* error checks */
-	if (argc != 4)
+	if (c != 4)
 	{
 		printf("Error\n");
 		return (98);
 	}
-	if (argv[2] == NULL)
+	if (v[2] == NULL)
 	{
 		printf("Error\n");
 		return (99);
 	}
-	if ((*argv[2] == '/' || *argv[2] == '%') && *argv[3] == '0')
+	if ((strcmp(v[2], "/") == 0 || strcmp(v[2], "%") == 0) && *v[3] == '0')
 	{
 		printf("Error\n");
 		return (100);
 	}
 
 	/* convert strings to int */
-	a = atoi(argv[1]);
-	b = atoi(argv[3]);
+	a = atoi(v[1]);
+	b = atoi(v[3]);
 
 	/* get the function we need */
-	func = get_op_func(argv[2]);
+	func = get_op_func(v[2]);
 
 	/* perform the operation */
 	printf("%i\n", func(a, b));
