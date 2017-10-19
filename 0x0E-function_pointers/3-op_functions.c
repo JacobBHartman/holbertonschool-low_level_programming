@@ -1,7 +1,7 @@
 #include "3-calc.h"
 
 /**
- * op_add: performs addition
+ * op_add - performs addition
  * @a: first integer
  * @b: second integer
  *
@@ -9,11 +9,11 @@
  */
 int op_add(int a, int b)
 {
-        return (a + b);
+	return (a + b);
 }
 
 /**
- * op_sub: performs subtraction
+ * op_sub - performs subtraction
  * @a: first integer
  * @b: second integer
  *
@@ -25,7 +25,7 @@ int op_sub(int a, int b)
 }
 
 /**
- * op_mul: performs multiplication
+ * op_mul - performs multiplication
  * @a: first integer
  * @b: second integer
  *
@@ -37,7 +37,7 @@ int op_mul(int a, int b)
 }
 
 /**
- * op_div: performs division
+ * op_div - performs division
  * @a: first integer
  * @b: second integer
  *
@@ -49,7 +49,7 @@ int op_div(int a, int b)
 }
 
 /**
- * op_mod: performs modulation
+ * op_mod - performs modulation
  * @a: first integer
  * @b: second integer
  *

@@ -2,6 +2,8 @@
 
 /**
  * main - commands the program
+ * @argc: argument count
+ * @argv: pointer to arrays of strings
  *
  * Return: 0 if successful
  */
