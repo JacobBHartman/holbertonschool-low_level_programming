@@ -10,33 +10,16 @@ void print_all(const char * const format, ...)
 {
 	va_list vl;         	/* declare variables */
 	unsigned int i;
-	unsigned int k;
-	char *format2;
+	char *storage;
+	unsigned int ignore;
 
-	format2 = malloc(sizeof(char) * 10);
+	va_start(vl, format);	/* initialize the argument list */
 
-	/* get rid of any extraneous letters */
-	k = 0;
-	i = 0;
-	while (format[i] != '\0')
+	ignore = 0;
+	i = 0;     	/* switch it son */
+	while (*(format + i))
 	{
-		if (format[i] == 'i' || format[i] == 'c' || format[i] == 'f' || format[i] == 's')
-		{
-			format2[k] = format[i];
-			k++;
-		}
-		i++;
-	}
-	format2[k] = '\0';
-
-	/* initialize the argument list */
-	va_start(vl, format);
-
-	/* switch it son */
-	i = 0;
-	while (*(format2 + i))
-	{
-		switch (*(format2 + i))
+		switch (*(format + i))
 		{
 		case 'i':
 			printf("%i", va_arg(vl, int));
@@ -45,14 +28,26 @@ void print_all(const char * const format, ...)
 			printf("%c", va_arg(vl, int));
 			break;
 		case 's':
-			printf("%s", va_arg(vl, char *));
+			storage = va_arg(vl, char *);
+			switch (*storage)
+			{
+			case '\0':
+				printf("(nil)");
+				break;
+			default:
+				printf("%s", storage);
+			}
 			break;
 		case 'f':
 			printf("%f", va_arg(vl, double));
 			break;
+		default:
+			ignore = 1;
+			;
 		}
-		if (i < k - 1)
+		if (*(format + 1 + i) != '\0' && ignore == 0)
 			printf(", ");
+		ignore = 0;
 		i++;
 	}
 
