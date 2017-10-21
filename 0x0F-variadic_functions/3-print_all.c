@@ -8,8 +8,7 @@
  */
 void print_all(const char * const format, ...)
 {
-	/* declare variables */
-	va_list vl;
+	va_list vl;         	/* declare variables */
 	unsigned int i;
 	unsigned int k;
 	char *format2;
@@ -30,15 +29,15 @@ void print_all(const char * const format, ...)
 	}
 	format2[k] = '\0';
 
-
 	/* initialize the argument list */
-	va_start(vl, NULL);
+	va_start(vl, format);
 
 	/* switch it son */
 	i = 0;
 	while (*(format2 + i))
 	{
-		switch(*(format2 + i)) {
+		switch (*(format2 + i))
+		{
 		case 'i':
 			printf("%i", va_arg(vl, int));
 			break;
