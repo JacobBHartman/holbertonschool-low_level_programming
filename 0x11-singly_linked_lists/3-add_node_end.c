@@ -10,22 +10,29 @@
 list_t *add_node_end(list_t **head, const char *str)
 {
 	/* declare variables */
+	list_t *nd;
 	list_t *temp;
 
-	/* check if NULL was passed */
-	if (head == NULL)
-		return (NULL);
-
-	/* allocate memory to temp */
-	temp = malloc(sizeof(*temp));
+	/* allocate memory to a new node */
+	nd = malloc(sizeof(list_t));
 
 	/* assign values to new node */
-	temp->len = strlen(str);
-	temp->str = strdup(str);
-	temp->next = NULL;
+	nd->len = strlen(str);
+	nd->str = strdup(str);
+	nd->next = NULL;
 
-	/* point head to new */
-	*head = temp
+	/* check if NULL was passed */
+	if (*head == NULL)
+	{
+		*head = nd;
+		return (nd);
+	}
 
-	return (&temp);
+	/* loop through list to find previously-last element */
+	temp = *head;
+	for ( ; temp->next != NULL; )
+		temp = temp->next;
+	temp->next = nd;
+
+	return (nd);
 }
