@@ -14,7 +14,7 @@ list_t *add_node(list_t **head, const char *str)
 	list_t *temp;
 
 	/* check if head == NULL */
-	if (head == NULL)
+	if (head == NULL || str == NULL)
 		return (NULL);
 
 	/* allocate memory to temp */
@@ -37,6 +37,5 @@ list_t *add_node(list_t **head, const char *str)
 	temp->next = *head;
 
 	*head = temp;
-	free(temp);
 	return (*head);
 }
