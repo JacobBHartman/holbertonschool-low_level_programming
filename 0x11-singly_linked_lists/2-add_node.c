@@ -20,10 +20,7 @@ list_t *add_node(list_t **head, const char *str)
 	/* allocate memory to temp */
 	temp = malloc(sizeof(list_t));
 	if (temp == NULL)
-	{
-		free(temp);
 		return (NULL);
-	}
 
 	/* strdup and strlen equivalent */
 	for (i = 0; str[i] != '\0'; i++)
@@ -42,5 +39,5 @@ list_t *add_node(list_t **head, const char *str)
 	temp->next = *head;
 
 	*head = temp;
-	return (*head);
+	return (temp);
 }
