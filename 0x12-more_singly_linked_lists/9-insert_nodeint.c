@@ -12,35 +12,44 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	/* declare variables */
 	listint_t *temp;
-	listint_t *tempdos;
-	listint_t *bgnnng;
+	listint_t *newnode;
 	unsigned int i;
 
 	/* check if NULL was passed to head */
 	if (head == NULL)
 		return (NULL);
 
-	/* keep a record of the beginning */
-	bgnnng = *head;
+	/* allocate memory for new node */
+	newnode = malloc(sizeof(listint_t));
+	newnode->n = n;
+	newnode->next = NULL;
+
+	/* check if node is inserted at index 0 */
+	if (idx == 0)
+	{
+		newnode->next = *head;
+		*head = newnode;
+		return (*head);
+	}
 
 	/* go through the list and stop at index */
-	i = 0;
-	while (i < idx && *head != NULL)
+	i = 1;
+	temp = *head;
+	while (temp != NULL && i < idx)
 	{
-		temp = *head;
-		if (temp == NULL)
-			return (NULL);
-		*head = temp->next;
+		temp = temp->next;
 		i++;
 	}
-	if (*head == NULL)
-		return (NULL);
+/*
+	if (temp == NULL && i == idx)
+	{
+	}
+*/
 
-	tempdos = malloc(sizeof(listint_t));
-	tempdos->n = n;
-	tempdos->next = temp->next;
-	temp->next = tempdos;
-	*head = bgnnng;
+	/* we reached the right index, now insert node */
+	newnode->next = temp->next;
+	temp->next = newnode;
 
+	/* return */
 	return (temp->next);
 }
