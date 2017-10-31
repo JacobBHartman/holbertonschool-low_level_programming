@@ -31,20 +31,18 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 		*head = newnode;
 		return (*head);
 	}
-	/* go through the list and stop at index */
-	temp = *head;
+	temp = *head; /* go through the list and stop at index */
 	while (temp != NULL && i < idx)
 	{
 		temp = temp->next;
 		i++;
 	}
-	/* check if node is instered at end */
-	if (temp->next == NULL && i == idx)
+	if (temp->next == NULL && i == idx) /* check if node is last node */
 	{
 		temp->next = newnode;
 		return (temp->next);
 	}
-	else if (temp->next == NULL && i < idx)
+	else if (temp == NULL && i < idx)
 		return (NULL);
 	/* we reached the right index, now insert node */
 	newnode->next = temp->next;
