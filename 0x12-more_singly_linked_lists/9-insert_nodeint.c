@@ -10,18 +10,21 @@
  */
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	/* declare variables */
 	listint_t *temp, *newnode;
 	unsigned int i = 1;
 	/* check if NULL was passed to head */
 	if (head == NULL)
 		return (NULL);
-	/* allocate memory for new node */
-	newnode = malloc(sizeof(listint_t));
+	newnode = malloc(sizeof(listint_t)); /* allocate memory for new node */
 	if (newnode == NULL)
 		return (NULL);
 	newnode->n = n;
 	newnode->next = NULL;
+	if (*head == NULL && idx == 0) /* check if list is empty */
+	{
+		*head = newnode;
+		return (*head);
+	}
 	/* check if node is inserted at index 0 */
 	if (idx == 0)
 	{
