@@ -11,9 +11,8 @@
 listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
 	/* declare variables */
-	listint_t *temp;
-	listint_t *newnode;
-	unsigned int i;
+	listint_t *temp, *newnode;
+	unsigned int i = 1;
 
 	/* check if NULL was passed to head */
 	if (head == NULL)
@@ -33,23 +32,22 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	}
 
 	/* go through the list and stop at index */
-	i = 1;
 	temp = *head;
 	while (temp != NULL && i < idx)
 	{
 		temp = temp->next;
 		i++;
 	}
-/*
-	if (temp == NULL && i == idx)
-	{
-	}
-*/
 
+	/* check if node is instered at end */
+	if (temp->next == NULL && i == idx)
+	{
+		temp->next = newnode;
+		return (temp->next);
+	}
 	/* we reached the right index, now insert node */
 	newnode->next = temp->next;
 	temp->next = newnode;
-
 	/* return */
 	return (temp->next);
 }
