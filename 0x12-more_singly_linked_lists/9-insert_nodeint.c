@@ -13,15 +13,19 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	/* declare variables */
 	listint_t *temp;
 	listint_t *tempdos;
+	listint_t *bgnnng;
 	unsigned int i;
 
 	/* check if NULL was passed to head */
 	if (head == NULL)
 		return (NULL);
 
+	/* keep a record of the beginning */
+	bgnnng = *head;
+
 	/* go through the list and stop at index */
 	i = 0;
-	while (i <= idx)
+	while (i < idx)
 	{
 		temp = *head;
 		if (temp == NULL)
@@ -34,7 +38,7 @@ listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 	tempdos->n = n;
 	tempdos->next = temp->next;
 	temp->next = tempdos;
-	*head = temp;
+	*head = bgnnng;
 
 	return (temp->next);
 }
