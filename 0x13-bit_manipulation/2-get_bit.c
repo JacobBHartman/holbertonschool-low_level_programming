@@ -13,9 +13,12 @@ int get_bit(unsigned long int n, unsigned int index)
 	unsigned long int limit;
 	unsigned int i;
 
+	if (index >= 64)
+		return (-1)
+
 	limit = 1;
 	for (i = 1; i < index; i++)
-		limit *= 2;
+		limit << 1;
 	if (limit > n)
 		return (-1);
 
