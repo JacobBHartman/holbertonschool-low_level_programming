@@ -8,23 +8,22 @@
  */
 void print_b_help(unsigned long int n)
 {
-        if ((n & 1) && (n > 0))
-        {
-                n >>= 1;
-                print_b_help(n);
-                _putchar('1');
-        }
-        else if (n > 0)
-        {
-
-                n >>= 1;
-                print_b_help(n);
-                _putchar('0');
-        }
-        else if (n == 0)
-        {
-                return;
-        }
+	if ((n & 1) && (n > 0))
+	{
+		n >>= 1;
+		print_b_help(n);
+		_putchar('1');
+	}
+	else if (n > 0)
+	{
+		n >>= 1;
+		print_b_help(n);
+		_putchar('0');
+	}
+	else if (n == 0)
+	{
+		return;
+	}
 }
 
 /**
