@@ -20,7 +20,7 @@ void error_message(int error_code, ...)
 	else if (error_code == 98)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file");
-		dprintf(" %s\n", va_arg(ap, char *));
+		dprintf(STDERR_FILENO, " %s\n", va_arg(ap, char *));
 		exit(98);
 	}
 
