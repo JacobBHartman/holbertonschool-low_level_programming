@@ -7,35 +7,36 @@
  */
 void error_message(int error_code, ...)
 {
-        va_list ap;
+	va_list ap;
 
-        va_start(ap, error_code);
+	va_start(ap, error_code);
 
-        if (error_code == 97)
+	if (error_code == 97)
 	{
-		dprintf(STDOUT_FILENO, "Usage: cp file_from file_to\n");
-                exit(97);
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		exit(97);
 	}
 
-        else if (error_code == 98)
+	else if (error_code == 98)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't read from file %s\n", va_arg(ap, char *));
+		dprintf(STDERR_FILENO, "Error: Can't read from file");
+		dprintf(" %s\n", va_arg(ap, char *));
 		exit(98);
 	}
 
-        else if (error_code == 99)
+	else if (error_code == 99)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't write to %s\n", va_arg(ap, char *));
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", va_arg(ap, char *));
 		exit(99);
 	}
 
-        else if (error_code == 100)
+	else if (error_code == 100)
 	{
-		dprintf(STDOUT_FILENO, "Error: Can't close fd %d\n", va_arg(ap, int));
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", va_arg(ap, int));
 		exit(100);
 	}
 
-        va_end(ap);
+	va_end(ap);
 }
 
 /**
@@ -61,16 +62,14 @@ int main(int argc, char *argv[])
 	if (file_to < 0)
 		error_message(99, argv[2]);
 
-	do
-	{
+	do {
 		red = read(file_from, buffer, BUFFER_SIZE);
 		if (red < 0)
 			error_message(98, argv[1]);
 		rote = write(file_to, buffer, red);
 		if (rote < 0)
 			error_message(99, argv[2]);
-	}
-	while (red == BUFFER_SIZE);
+	} while (red == BUFFER_SIZE);
 
 	if (close(file_from) < 0)
 		error_message(100, file_from);
