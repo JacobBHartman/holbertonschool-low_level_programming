@@ -13,7 +13,7 @@ dlistint_t *add_dnodeint(dlistint_t **head, const int n)
 	dlistint_t *temp = *head;
 
 	if (head == NULL)
-		retuurn (NULL);
+		return (NULL);
 
 	/* allocate memory for new node */
 	nn_ptr = malloc(sizeof(dlistint_t));
