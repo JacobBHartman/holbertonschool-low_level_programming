@@ -34,23 +34,16 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/* check to see if key already exists */
 	for (temp = ht->array[i]; temp != NULL; temp = temp->next)
 	{
-		if (temp->key == new_node->key)
+		if (strcmp(temp->key, new_node->key) == 0)
 		{
 			temp->value = new_node->value;
 			return (1);
 		}
 	}
 
-	if ((ht->array)[i] == NULL)
-	{
-		ht->array[i] = new_node;
-		new_node->next = NULL;
-	}
-	else
-	{
-		temp = ht->array[i];
-		ht->array[i] = new_node;
-		new_node->next = temp;
-	}
+	/* add node at the beginning */
+	new_node->next = ht->array[i];
+	ht->array[i] = new_node;
+
 	return (1);
 }
