@@ -15,6 +15,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (!ht || !key || !value || strlen(key) == 0 || !ht->array)
 		return (0);
 
+	i = key_index((const unsigned char *)key, ht->size);
+
 	/* check to see if key already exists */
 	temp = ht->array[i];
 	while (temp != NULL)
@@ -27,8 +29,6 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 		temp = temp->next;
 	}
-
-	i = key_index((const unsigned char *)key, ht->size);
 
 	/* create the new node */
 	new_node = malloc(sizeof(hash_node_t));
