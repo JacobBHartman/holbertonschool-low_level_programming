@@ -9,28 +9,31 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int i = key_index((const unsigned char *)key, ht->size);
+	unsigned long int i;
 	hash_node_t *temp, *new_node;
 
 	if (!ht || !key || !value || strlen(key) == 0 || !ht->array)
 		return (0);
 
-	/* create the new node */
-	new_node = malloc(sizeof(hash_node_t));
-	if (new_node == NULL)
-		return (0);
-
 	/* check to see if key already exists */
-	for (temp = ht->array[i]; temp != NULL; temp = temp->next)
+	temp = ht->array[i];
+	while (temp != NULL; temp = temp->next)
 	{
 		if (strcmp(temp->key, key) == 0)
 		{
 			free(temp->value);
 			temp->value = strdup(value);
-			free(new_node);
 			return (1);
 		}
+		temp = temp->next;
 	}
+
+	i = key_index((const unsigned char *)key, ht->size);
+
+	/* create the new node */
+	new_node = malloc(sizeof(hash_node_t));
+	if (new_node == NULL)
+		return (0);
 
 	new_node->key = strdup(key);
 /*	if (new_node->key == NULL)
