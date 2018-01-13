@@ -17,7 +17,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	/* check to see if key already exists */
 	temp = ht->array[i];
-	while (temp != NULL; temp = temp->next)
+	while (temp != NULL)
 	{
 		if (strcmp(temp->key, key) == 0)
 		{
