@@ -34,7 +34,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	/* check to see if key already exists */
 	for (temp = ht->array[i]; temp != NULL; temp = temp->next)
 	{
-		if (strcmp(temp->key, new_node->key) == 0)
+		if (strcmp(temp->key, key) == 0)
 		{
 			free(temp->value);
 			temp->value = new_node->value;
