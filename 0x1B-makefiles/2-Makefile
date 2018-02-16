@@ -4,7 +4,9 @@ OBJ = $(SRC:c=o)
 NAME = holberton
 
 all: $(NAME)
+
+$(NAME): $(OBJ)
 	$(CC) $(OBJ) -o $(NAME)
 
-%.o: %.c Makefile
-	$(CC) -c $<
+%.o: %.c m.h
+	$(CC) -c -o $@ $<
