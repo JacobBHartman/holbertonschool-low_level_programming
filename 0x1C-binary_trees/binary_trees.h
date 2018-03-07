@@ -40,7 +40,7 @@ typedef struct binary_tree_s binary_tree_t;
  ***********************/
 
 void binary_tree_print(const binary_tree_t *);
-size_t binary_tree_height_actual(const binary_tree_t *tree);
+size_t binary_tree_height_v2(const binary_tree_t *tree);
 
 binary_tree_t *binary_tree_node(binary_tree_t *parent, int value);
 binary_tree_t *binary_tree_insert_left(binary_tree_t *parent, int value);
